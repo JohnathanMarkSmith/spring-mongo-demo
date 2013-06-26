@@ -1,12 +1,11 @@
 package com.johnathanmarksmith.mongodb.example;
 
-import org.springframework.context.annotation.Bean;
+import com.mongodb.Mongo;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.mongodb.core.MongoFactoryBean;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 
 /**
@@ -24,31 +23,26 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 
 @Configuration
-@EnableTransactionManagement
+@EnableMongoRepositories
 @ComponentScan(basePackageClasses = {MongoDBApp.class})
 @PropertySource("classpath:application.properties")
-public class MongoConfiguration
+public class MongoConfiguration extends AbstractMongoConfiguration
 {
 
-    <!-- Define the MongoTemplate which handles connectivity with MongoDB -->
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-    <constructor-arg name="mongo" ref="mongo"/>
-    <constructor-arg name="databaseName" value="demo"/>
-    </bean>
 
-    @Bean
-    public MongoTemplate mongoTemplate()
-    {
-        MongoTemplate tp = new MongoTemplate(mongo(), "demo");
-        return tp;
+    @Override
+    protected String getDatabaseName() {
+        return "demo";
     }
 
-    @Bean
-    public MongoFactoryBean mongo(){
-        MongoFactoryBean mfb = new MongoFactoryBean();
-        mfb.setHost("localhost");
+    @Override
+    public Mongo mongo() throws Exception {
+        return new Mongo();
+    }
 
-        return mfb;
+    @Override
+    protected String getMappingBasePackage() {
+        return "com.johnathanmarksmith.mongodb.example.domain";
     }
 
 }
