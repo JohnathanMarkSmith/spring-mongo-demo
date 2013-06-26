@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Email:  john@johnathanmarksmith.com
  * <p/>
  * Comments:
- *
- *   This is a Person object that I am going to be using for my demo
+ * <p/>
+ * This is a Person object that I am going to be using for my demo
  */
 
 
@@ -51,10 +51,11 @@ public class Person {
     public void setAge(final int age) {
         this.age = age;
     }
+
     @Override
     public String toString() {
         return "Person [id=" + personId + ", name=" + name
-                + ", age=" + age +  "]";
+                + ", age=" + age + "]";
     }
 
 }

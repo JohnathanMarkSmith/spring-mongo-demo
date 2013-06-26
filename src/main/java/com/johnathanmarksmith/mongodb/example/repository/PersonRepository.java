@@ -19,9 +19,8 @@ import java.util.List;
  * Email:  john@johnathanmarksmith.com
  * <p/>
  * Comments:
- *
- *  This is my Person Repository
- *
+ * <p/>
+ * This is my Person Repository
  */
 
 
@@ -33,8 +32,7 @@ public class PersonRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public void countUnderAge()
-    {
+    public void countUnderAge() {
         List<Person> results = null;
 
         Query query = new Query();
@@ -48,9 +46,7 @@ public class PersonRepository {
     }
 
     /**
-     *
      * This will count how many Person Objects I have
-     *
      */
     public void countAllPersons() {
         List<Person> results = mongoTemplate.findAll(Person.class);
@@ -58,10 +54,8 @@ public class PersonRepository {
     }
 
     /**
-     *
      * This will install a new Person object with my
      * name and random age
-     *
      */
     public void insertPersonWithNameJohnathanAndRandomAge() {
 
@@ -72,9 +66,7 @@ public class PersonRepository {
     }
 
     /**
-     *
      * this will create a {@link Person} collection if the collection does not already exists
-     *
      */
     public void createPersonCollection() {
         if (!mongoTemplate.collectionExists(Person.class)) {
@@ -83,9 +75,7 @@ public class PersonRepository {
     }
 
     /**
-     *
      * this will drop the {@link Person} collection if the collection does already exists
-     *
      */
     public void dropPersonCollection() {
         if (mongoTemplate.collectionExists(Person.class)) {
