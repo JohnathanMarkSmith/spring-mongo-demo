@@ -24,8 +24,8 @@ public class MongoDBApp {
         //create person collection
         personRepository.createPersonCollection();
 
-        for (int i = 0; i < 2000; i++) {
-            personRepository.insertPersonWithNameJohnAndRandomAge();
+        for (int i = 0; i < 10000; i++) {
+            personRepository.insertPersonWithNameJohnathanAndRandomAge();
         }
 
         personRepository.countAllPersons();

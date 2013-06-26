@@ -48,7 +48,7 @@ public class PersonRepository {
      * name and random age
      *
      */
-    public void insertPersonWithNameJohnAndRandomAge() {
+    public void insertPersonWithNameJohnathanAndRandomAge() {
 
         double age = Math.ceil(Math.random() * 100);
         Person p = new Person("Johnathan", (int) age);

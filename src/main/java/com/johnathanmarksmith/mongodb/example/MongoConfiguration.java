@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * <p/>
  * As you can see from the code below this is easy and a lot better then using the old style of XML files.
  * <p/>
- * This is used to read in a properties file and setup access to the RESTServer bean/
+ * T
  */
 
 @Configuration
