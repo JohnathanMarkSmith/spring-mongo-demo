@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,6 +33,19 @@ public class PersonRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
+    public void countUnderAge()
+    {
+        List<Person> results = null;
+
+        Query query = new Query();
+        Criteria criteria = new Criteria();
+        criteria = criteria.and("age").lte(21);
+
+        query.addCriteria(criteria);
+        results = mongoTemplate.find(query, Person.class);
+
+        logger.info("Total number of under age in database: {}", results.size());
+    }
 
     /**
      *

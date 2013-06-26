@@ -29,6 +29,16 @@ public class MongoDBApp {
         }
 
         personRepository.countAllPersons();
+
+
+        /***
+         *
+         * Added Under Age Test For someone to see
+         *
+         */
+        personRepository.countUnderAge();
+
+
         logger.info("MongoDemo application");
     }
 }
