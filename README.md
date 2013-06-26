@@ -200,7 +200,7 @@ You can see from the above code how easy it is to use Spring Data Mongo to post 
 You can checkout the project from github.
 
     git clone git@github.com:JohnathanMarkSmith/spring-mongo-demo.git
-    cd spring-mongo-demo.git
+    cd spring-mongo-demo
     mvn clean package
     mvn exec:java
 
