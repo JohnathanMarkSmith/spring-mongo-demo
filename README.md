@@ -101,11 +101,21 @@ Now its time to see the source code in the repository
         @Autowired
         MongoTemplate mongoTemplate;
 
+        public void countUnderAge() {
+            List<Person> results = null;
+
+            Query query = new Query();
+            Criteria criteria = new Criteria();
+            criteria = criteria.and("age").lte(21);
+
+            query.addCriteria(criteria);
+            results = mongoTemplate.find(query, Person.class);
+
+            logger.info("Total number of under age in database: {}", results.size());
+        }
 
         /**
-         *
          * This will count how many Person Objects I have
-         *
          */
         public void countAllPersons() {
             List<Person> results = mongoTemplate.findAll(Person.class);
@@ -113,10 +123,8 @@ Now its time to see the source code in the repository
         }
 
         /**
-         *
          * This will install a new Person object with my
          * name and random age
-         *
          */
         public void insertPersonWithNameJohnathanAndRandomAge() {
 
@@ -127,9 +135,7 @@ Now its time to see the source code in the repository
         }
 
         /**
-         *
          * this will create a {@link Person} collection if the collection does not already exists
-         *
          */
         public void createPersonCollection() {
             if (!mongoTemplate.collectionExists(Person.class)) {
@@ -138,9 +144,7 @@ Now its time to see the source code in the repository
         }
 
         /**
-         *
          * this will drop the {@link Person} collection if the collection does already exists
-         *
          */
         public void dropPersonCollection() {
             if (mongoTemplate.collectionExists(Person.class)) {
@@ -153,10 +157,6 @@ Now its time to see the source code in the repository
 ## The Main Class
 
 Time for the main class now.. are you ready for all this code??
-
-    public class MongoDBApp {
-
-        static final Logger logger = LoggerFactory.getLogger(MongoDBApp.class);
 
         public static void main(String[] args) {
             logger.info("MongoDemo application");
@@ -176,6 +176,16 @@ Time for the main class now.. are you ready for all this code??
             }
 
             personRepository.countAllPersons();
+
+
+            /***
+             *
+             * Added Under Age Test For someone to see
+             *
+             */
+            personRepository.countUnderAge();
+
+
             logger.info("MongoDemo application");
         }
     }
