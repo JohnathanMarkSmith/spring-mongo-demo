@@ -34,6 +34,8 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
         return "demo";
     }
 
+
+
     @Override
     public Mongo mongo() throws Exception {
         return new Mongo();
