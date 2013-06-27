@@ -29,13 +29,13 @@ public class MongoDBApp {
             personRepository.insertPersonWithNameJohnathanAndRandomAge();
         }
         long endTime = System.currentTimeMillis();
-        logger.info("Load Took " + (endTime - startTime) + " milliseconds");
+        logger.info("Load Took " + (endTime - startTime) / 1000 + " seconds");
 
 
         startTime = System.currentTimeMillis();
         personRepository.countAllPersons();
         endTime = System.currentTimeMillis();
-        logger.info("Count All Took " + (endTime - startTime) + " milliseconds");
+        logger.info("Count All Took " + (endTime - startTime)  / 1000 + " seconds");
 
 
         /***
@@ -46,7 +46,7 @@ public class MongoDBApp {
         startTime = System.currentTimeMillis();
         personRepository.countUnderAge();
         endTime = System.currentTimeMillis();
-        logger.info("Under age search Took " + (endTime - startTime) + " milliseconds");
+        logger.info("Under age search Took " + (endTime - startTime) / 1000 + " seconds");
 
 
 
