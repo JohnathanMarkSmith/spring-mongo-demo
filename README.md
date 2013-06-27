@@ -171,6 +171,8 @@ Time for the main class now.. are you ready for all this code??
             //create person collection
             personRepository.createPersonCollection();
 
+
+
             for (int i = 0; i < 10000; i++) {
                 personRepository.insertPersonWithNameJohnathanAndRandomAge();
             }

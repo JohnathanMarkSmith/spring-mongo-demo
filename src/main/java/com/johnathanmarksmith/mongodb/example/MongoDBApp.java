@@ -24,11 +24,18 @@ public class MongoDBApp {
         //create person collection
         personRepository.createPersonCollection();
 
+        long startTime = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             personRepository.insertPersonWithNameJohnathanAndRandomAge();
         }
+        long endTime = System.currentTimeMillis();
+        logger.info("Load Took " + (endTime - startTime) + " milliseconds");
 
+
+        startTime = System.currentTimeMillis();
         personRepository.countAllPersons();
+        endTime = System.currentTimeMillis();
+        logger.info("Count All Took " + (endTime - startTime) + " milliseconds");
 
 
         /***
@@ -36,7 +43,12 @@ public class MongoDBApp {
          * Added Under Age Test For someone to see
          *
          */
+        startTime = System.currentTimeMillis();
         personRepository.countUnderAge();
+        endTime = System.currentTimeMillis();
+        logger.info("Under age search Took " + (endTime - startTime) + " milliseconds");
+
+
 
 
         logger.info("MongoDemo application");
