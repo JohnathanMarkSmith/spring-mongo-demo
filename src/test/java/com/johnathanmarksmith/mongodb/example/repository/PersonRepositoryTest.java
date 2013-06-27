@@ -39,9 +39,10 @@ public class PersonRepositoryTest {
 	 * Expected results are in "one-person.json" file
 	 */
 	@Test
-	@ShouldMatchDataSet(location = "/one-person.json")
+	@ShouldMatchDataSet(location = "/two-person.json")
     public void testInsertPersonWithNameJohnathanAndRandomAge(){
-         this.personRepository.insertPersonWithNameJohnathanAndRandomAge();
+         this.personRepository.insertPersonWithNameJohnathan(35);
+         this.personRepository.insertPersonWithNameJohnathan(67);
     }
 	
 	/**

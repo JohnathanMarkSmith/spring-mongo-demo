@@ -1,8 +1,0 @@
-{
-    "person": [
-        {
-            "name": "Johnathan",
-            "age": { $gte : 0, $lt : 100 }
-        }
-    ]
-}

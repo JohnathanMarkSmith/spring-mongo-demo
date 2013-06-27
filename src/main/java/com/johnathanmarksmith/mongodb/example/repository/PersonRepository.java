@@ -1,7 +1,8 @@
 package com.johnathanmarksmith.mongodb.example.repository;
 
 
-import com.johnathanmarksmith.mongodb.example.domain.Person;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.johnathanmarksmith.mongodb.example.domain.Person;
 
 
 /**
@@ -64,9 +65,7 @@ public class PersonRepository {
      * This will install a new Person object with my
      * name and random age
      */
-    public void insertPersonWithNameJohnathanAndRandomAge() {
-
-        double age = Math.ceil(Math.random() * 100);
+    public void insertPersonWithNameJohnathan(double age) {
         Person p = new Person("Johnathan", (int) age);
 
         mongoTemplate.insert(p);
