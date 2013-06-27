@@ -32,7 +32,7 @@ public class PersonRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public void countUnderAge() {
+    public long countUnderAge() {
         List<Person> results = null;
 
         Query query = new Query();
@@ -40,17 +40,24 @@ public class PersonRepository {
         criteria = criteria.and("age").lte(21);
 
         query.addCriteria(criteria);
-        results = mongoTemplate.find(query, Person.class);
-
-        logger.info("Total number of under age in database: {}", results.size());
+        //results = mongoTemplate.find(query, Person.class);
+        long count = this.mongoTemplate.count(query, Person.class);
+        
+        logger.info("Total number of under age in database: {}", count);
+        return count;
     }
 
     /**
      * This will count how many Person Objects I have
      */
-    public void countAllPersons() {
-        List<Person> results = mongoTemplate.findAll(Person.class);
-        logger.info("Total number in database: {}", results.size());
+    public long countAllPersons() {
+    	// findAll().size() approach is very inefficient, since it returns the whole documents
+    	// List<Person> results = mongoTemplate.findAll(Person.class);
+        
+    	long total = this.mongoTemplate.count(null, Person.class);
+        logger.info("Total number in database: {}", total);
+        
+        return total;
     }
 
     /**
