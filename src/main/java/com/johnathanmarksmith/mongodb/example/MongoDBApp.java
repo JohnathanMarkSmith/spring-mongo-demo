@@ -26,7 +26,7 @@ public class MongoDBApp {
 
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
-            personRepository.insertPersonWithNameJohnathanAndRandomAge();
+            personRepository.insertPersonWithNameJohnathan(Math.ceil(Math.random() * 100));
         }
         long endTime = System.currentTimeMillis();
         logger.info("Load Took " + (endTime - startTime) / 1000 + " seconds");
