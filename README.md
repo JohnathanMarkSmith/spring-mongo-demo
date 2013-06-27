@@ -195,7 +195,7 @@ Time for the main class now.. are you ready for all this code??
 You can see from the above code how easy it is to use Spring Data Mongo to post data to a MongoDB.
 
 
-### Download and Run Code
+### Download and Run
 
 You can checkout the project from github.
 
