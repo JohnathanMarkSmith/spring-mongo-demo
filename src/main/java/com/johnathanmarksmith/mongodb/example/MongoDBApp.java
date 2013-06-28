@@ -25,7 +25,7 @@ public class MongoDBApp {
         personRepository.createPersonCollection();
 
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             personRepository.insertPersonWithNameJohnathan(Math.ceil(Math.random() * 100));
         }
         long endTime = System.currentTimeMillis();
