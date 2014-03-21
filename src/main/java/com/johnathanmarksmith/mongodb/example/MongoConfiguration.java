@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import java.util.ArrayList;
 
-
 /**
  * Date:   5/24/13 / 8:05 AM
  * Author: Johnathan Mark Smith
@@ -31,13 +30,10 @@ import java.util.ArrayList;
 @PropertySource("classpath:application.properties")
 public class MongoConfiguration extends AbstractMongoConfiguration {
 
-
     @Override
     protected String getDatabaseName() {
         return "demo";
     }
-
-
 
     @Override
     public Mongo mongo() throws Exception {
@@ -48,13 +44,16 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
         // return new Mongo();
 
-
         /**
          *
          * This is for a relset of db's
          */
 
-        return new Mongo(new ArrayList<ServerAddress>() {{ add(new ServerAddress("127.0.0.1", 27017)); add(new ServerAddress("127.0.0.1", 27027)); add(new ServerAddress("127.0.0.1", 27037)); }});
+        return new Mongo(new ArrayList<ServerAddress>() {{
+            add(new ServerAddress("127.0.0.1",27017));
+            add(new ServerAddress("127.0.0.1",27027));
+            add(new ServerAddress("127.0.0.1",27037));
+        }});
 
     }
 
